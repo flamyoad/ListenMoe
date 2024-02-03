@@ -1,0 +1,46 @@
+fragment songFields on Song {
+    id
+    title
+    titleRomaji
+    artists {
+        name
+        nameRomaji
+        image
+    }
+    albums {
+        name
+        nameRomaji
+        image
+    }
+    sources {
+        name
+        nameRomaji
+        image
+    }
+    duration
+    enabled
+}
+
+fragment songListFields on Song {
+    id
+    title
+    titleRomaji
+    artists {
+        name
+        nameRomaji
+    }
+}
+
+query SongQuery($id: Int!) {
+    song(id: $id) {
+        ...songFields
+    }
+}
+
+query SongsQuery($offset: Int!, $count: Int!, $kpop: Boolean) {
+    songs(offset: $offset, count: $count, kpop: $kpop) {
+        songs {
+            ...songListFields
+        }
+    }
+}

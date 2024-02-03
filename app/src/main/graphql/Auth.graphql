@@ -1,0 +1,18 @@
+mutation LoginMutation($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+        mfa
+        token
+    }
+}
+
+mutation LoginMfaMutation($otpToken: String!) {
+    loginMFA(token: $otpToken) {
+        token
+    }
+}
+
+mutation RegisterMutation($email: String!, $username: String!, $password: String!) {
+    register(email: $email, username: $username, password: $password) {
+        uuid
+    }
+}
